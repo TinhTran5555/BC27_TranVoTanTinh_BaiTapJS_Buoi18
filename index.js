@@ -1,4 +1,3 @@
-
 var nums = [];
 var soDuong = [];
 function themSoN() {
@@ -87,52 +86,52 @@ function timSoDuongNhoNhat() {
 }
 // Bài 5
 // B1 Viết hàm kiểm tra số chẵn để trả về hai kết quả khác nhau
-   function kiemTraCoSoChan() {
-// B2 Viết hàm tìm số chẵn cuối cùng bến dưới rồi gán vào biến số chẵn 
-        var soChan = timSoChan()
-        console.log(soChan);
-        if (soChan == -1) {
-            // B3 Hiện thị Kết quả
-            var divHienSoChanCuoiCung = document.getElementById("divHienSoChanCuoiCung");
-            divHienSoChanCuoiCung.style.display = "block";
-            divHienSoChanCuoiCung.innerHTML = `
+function kiemTraCoSoChan() {
+  // B2 Viết hàm tìm số chẵn cuối cùng bến dưới rồi gán vào biến số chẵn
+  var soChan = timSoChan();
+  console.log(soChan);
+  if (soChan === -1) {
+    // B3 Hiện thị Kết quả
+    var divHienSoChanCuoiCung = document.getElementById(
+      "divHienSoChanCuoiCung"
+    );
+    divHienSoChanCuoiCung.style.display = "block";
+    divHienSoChanCuoiCung.innerHTML = `
                 <p>Không có số chẵn nào trong mãng</p>
               `;
-        }
-        else {
-            var divHienSoChanCuoiCung = document.getElementById("divHienSoChanCuoiCung");
-  divHienSoChanCuoiCung.style.display = "block";
-  divHienSoChanCuoiCung.innerHTML = `
+  } else {
+    var divHienSoChanCuoiCung = document.getElementById(
+      "divHienSoChanCuoiCung"
+    );
+    divHienSoChanCuoiCung.style.display = "block";
+    divHienSoChanCuoiCung.innerHTML = `
       <p>Số chẵn cuối cùng: ${soChan}</p>
     `;
-        }
-    }
+  }
+}
 // Viết hàm tìm số chẵn
-    function timSoChan() {
-    var soChan = -1;
-    for (var index = 0; index < nums.length; index++) {
-      if (nums[index] % 2 == 0) {
-        soChan = nums[index];
-      }
+function timSoChan() {
+  var soChan = -1;
+  for (var index = 0; index < nums.length; index++) {
+    if (nums[index] % 2 == 0) {
+      soChan = nums[index];
     }
-    
-    return soChan
-   
   }
 
+  return soChan;
+}
 
-  
 // Bài 6
 function doiViTri() {
-//   B1 Dom tới các input để lấy giá trị, đồng thời tạo một biến tạm thời. 
+  //   B1 Dom tới các input để lấy giá trị, đồng thời tạo một biến tạm thời.
   var number1 = +document.getElementById("number1").value;
   var number2 = +document.getElementById("number2").value;
   var bienTamThoi = 0;
-//   B2 Viết logic đổi vị trí các giá trị 
+  //   B2 Viết logic đổi vị trí các giá trị
   bienTamThoi = nums[number1];
   nums[number1] = nums[number2];
   nums[number2] = bienTamThoi;
-//  B3 Hiện thị
+  //  B3 Hiện thị
   var divDoiViTri = document.getElementById("divDoiViTri");
   divDoiViTri.style.display = "block";
   divDoiViTri.innerHTML = `
@@ -142,101 +141,94 @@ function doiViTri() {
 // Bài 7
 
 function sapXepTangDan() {
-   nums.sort(function(a,b) {
-     return a - b;
-   });
-   var divHienSapXepTangDan = document.getElementById("divHienSapXepTangDan");
-   divHienSapXepTangDan.style.display = "block";
-   divHienSapXepTangDan.innerHTML = `
+  nums.sort(function (a, b) {
+    return a - b;
+  });
+  var divHienSapXepTangDan = document.getElementById("divHienSapXepTangDan");
+  divHienSapXepTangDan.style.display = "block";
+  divHienSapXepTangDan.innerHTML = `
        <p>Mảng sau khi được sắp xếp: ${nums}</p>
      `;
-  
 }
-// Bài 8 
+// Bài 8
 // B1 Viết hàm kiểm tra số nguyên tố
 function kiemTraSoNguyenTo(n) {
-  //    Đặt biến soNguyenTo = 1 là số nguyên tố,
-  //    soNguyenTo = -1 không phải số nguyên tố;
-  var soNguyenTo = 1;
-  // Bỏ qua số bé hơn 2 vì không phải số nguyên tố
-  if (n < 2)
-      return (soNguyenTo = -1);
+  // true = số nguyên tố;
+  // false =  không phải số nguyên tố
+  if (n < 2) return false;
 
-  //   Viết vòng lặp kiểm tra có phải số nguyên tố không 
-  var i = 3;
-  while (i < n) {
-      if (n % i == 0) {
-          soNguyenTo = -1;
-          break;
-      }
-      i++;
+  for (var i = 2; i < Math.sqrt(n); i++) {
+    if (n % i === 0) {
+      return false;
+    }
   }
-  return soNguyenTo;
+  return true;
 }
 // B2 Viết hàm tìm số nguyên tốt
-function timSoNguyenToDauTien(n) {
+function timSoNguyenToDauTien() {
   // Tạo vòng lặp
-  for (var i = 0; i < nums.length; i++){
-    if (kiemTraSoNguyenTo(nums[i]) == 1) {
-    
-     
-     console.log(nums[i]);
-     break 
-    //  Chỉ cần tìm được 1 kết quả ta cho dừng vòng lắp bằng brek 
+  for (var i = 0; i < nums.length; i++) {
+    if (kiemTraSoNguyenTo(nums[i]) === true) {
+      break;
+      //  Chỉ cần tìm được 1 kết quả ta cho dừng vòng lắp bằng brek
+    } else {
+      // Thêm trường hợp khi không có số nguyên tố được tìm thấy
+      kiemTraSoNguyenTo(nums[i]) === false;
+
+      return (nums[i] =
+        "Không có do trong mảng không có số nguyên tố đầu tiên");
     }
   }
   // B3 hiện thị
-  var divTimSoNguyenToDauTien = document.getElementById("divTimSoNguyenToDauTien");
-      divTimSoNguyenToDauTien.style.display = "block";
-      divTimSoNguyenToDauTien.innerHTML = `
+  var divTimSoNguyenToDauTien = document.getElementById(
+    "divTimSoNguyenToDauTien"
+  );
+  divTimSoNguyenToDauTien.style.display = "block";
+  divTimSoNguyenToDauTien.innerHTML = `
        <p>số nguyên tố tìm được là: ${nums[i]}</p>
      `;
-  }
-  // Bài 9
-  // B1 Tạo hàm kiểm tra số nguyên
-  function demSoNguyen() { 
-    // Tạo biến số nguyên bằng 0 Để đếm
-    var soNguyen = 0
-    // B2 Tạo vòng lặp để đếm số nguyên 
-    for (var i = 0; i < nums.length; i++) {
-      if (Number.isInteger(nums[i]) == true) {
-        soNguyen++
-      }
+}
+// Bài 9
+// B1 Tạo hàm kiểm tra số nguyên
+function demSoNguyen() {
+  // Tạo biến số nguyên bằng 0 Để đếm
+  var soNguyen = 0;
+  // B2 Tạo vòng lặp để đếm số nguyên
+  for (var i = 0; i < nums.length; i++) {
+    if (Number.isInteger(nums[i]) === true) {
+      soNguyen++;
     }
-    // B3 Hiện thị
-    var divDemSoNguyen = document.getElementById("divDemSoNguyen");
-    divDemSoNguyen.style.display = "block";
-    divDemSoNguyen.innerHTML = `
-       <p>số nguyên tố tìm được là: ${soNguyen}</p>
+  }
+  // B3 Hiện thị
+  var divDemSoNguyen = document.getElementById("divDemSoNguyen");
+  divDemSoNguyen.style.display = "block";
+  divDemSoNguyen.innerHTML = `
+       <p>số nguyên tìm được là: ${soNguyen}</p>
      `;
-  }
-  // Bài 10
-  function soSanhAmDuong() {
-    // B1 Tạo biến soLuongSoDuong và soLuongSoAm
-    var soLuongSoDuong = 0;
-    var soLuongSoAm = 0
-    // B2 Tạo vòng lặp để tính toán
-    for (var i = 0; i < nums.length; i++) {
-      if (nums[i] > 0) {
-        soLuongSoDuong++;
-      } else {
-        soLuongSoAm++
-      }
+}
+// Bài 10
+function soSanhAmDuong() {
+  // B1 Tạo biến soLuongSoDuong và soLuongSoAm
+  var soLuongSoDuong = 0;
+  var soLuongSoAm = 0;
+  // B2 Tạo vòng lặp để tính toán
+  for (var i = 0; i < nums.length; i++) {
+    if (nums[i] > 0) {
+      soLuongSoDuong++;
+    } else {
+      soLuongSoAm++;
     }
-    // B3 Hiện thị hai trường hợp 
-    var divSoSanh = document.getElementById("divSoSanh");
-    divSoSanh.style.display = "block";
-    if (soLuongSoDuong > soLuongSoAm ) {
-      divSoSanh.innerHTML = `
+  }
+  // B3 Hiện thị hai trường hợp
+  var divSoSanh = document.getElementById("divSoSanh");
+  divSoSanh.style.display = "block";
+  if (soLuongSoDuong > soLuongSoAm) {
+    divSoSanh.innerHTML = `
         <p>Số lượng số dương: ${soLuongSoDuong} > Số lượng số âm: ${soLuongSoAm} </p>
       `;
-    } else if (soLuongSoDuong < soLuongSoAm ) {
-      divSoSanh.innerHTML =
-      `<p>Số lượng số dương: ${soLuongSoDuong} < Số lượng số âm: ${soLuongSoAm} </p>`
-    } else {
-      divSoSanh.innerHTML =
-      `<p>Số lượng số dương: ${soLuongSoDuong} = Số lượng số âm: ${soLuongSoAm} </p>`
-    }
-
-   
+  } else if (soLuongSoDuong < soLuongSoAm) {
+    divSoSanh.innerHTML = `<p>Số lượng số dương: ${soLuongSoDuong} < Số lượng số âm: ${soLuongSoAm} </p>`;
+  } else {
+    divSoSanh.innerHTML = `<p>Số lượng số dương: ${soLuongSoDuong} = Số lượng số âm: ${soLuongSoAm} </p>`;
   }
+}
