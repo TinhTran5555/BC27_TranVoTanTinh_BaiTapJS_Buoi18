@@ -157,7 +157,7 @@ function kiemTraSoNguyenTo(n) {
   // false =  không phải số nguyên tố
   if (n < 2) return false;
 
-  for (var i = 2; i < Math.sqrt(n); i++) {
+  for (var i = 2; i < n; i++) {
     if (n % i === 0) {
       return false;
     }
@@ -185,7 +185,7 @@ function timSoNguyenToDauTien() {
   );
   divTimSoNguyenToDauTien.style.display = "block";
   divTimSoNguyenToDauTien.innerHTML = `
-       <p>số nguyên tố tìm được là: ${nums[i]}</p>
+       <p>Số nguyên tố tìm được là: ${nums[i]}</p>
      `;
 }
 // Bài 9
@@ -203,7 +203,7 @@ function demSoNguyen() {
   var divDemSoNguyen = document.getElementById("divDemSoNguyen");
   divDemSoNguyen.style.display = "block";
   divDemSoNguyen.innerHTML = `
-       <p>số nguyên tìm được là: ${soNguyen}</p>
+       <p>Số nguyên tìm được là: ${soNguyen}</p>
      `;
 }
 // Bài 10
