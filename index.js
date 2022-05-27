@@ -166,26 +166,27 @@ function kiemTraSoNguyenTo(n) {
 }
 // B2 Viết hàm tìm số nguyên tốt
 function timSoNguyenToDauTien() {
+  var soNguyenToDauTien = -1
   // Tạo vòng lặp
   for (var i = 0; i < nums.length; i++) {
     if (kiemTraSoNguyenTo(nums[i]) === true) {
+      soNguyenToDauTien = nums[i]
       break;
-      //  Chỉ cần tìm được 1 kết quả ta cho dừng vòng lắp bằng brek
-    } else {
-      // Thêm trường hợp khi không có số nguyên tố được tìm thấy
-      kiemTraSoNguyenTo(nums[i]) === false;
-
-      return (nums[i] =
-        "Không có do trong mảng không có số nguyên tố đầu tiên");
-    }
+      //  Chỉ cần tìm được 1 kết quả ta cho dừng vòng lắp bằng break
+    } 
+    console.log(soNguyenToDauTien);
   }
+   if (soNguyenToDauTien == -1) {
+    soNguyenToDauTien = "Không tìm thấy bất kì số nguyên tố nào trong mảng"}
+  
+  console.log(nums[i]);
   // B3 hiện thị
   var divTimSoNguyenToDauTien = document.getElementById(
     "divTimSoNguyenToDauTien"
   );
   divTimSoNguyenToDauTien.style.display = "block";
   divTimSoNguyenToDauTien.innerHTML = `
-       <p>Số nguyên tố tìm được là: ${nums[i]}</p>
+       <p>Số nguyên tố tìm được: ${soNguyenToDauTien}</p>
      `;
 }
 // Bài 9
