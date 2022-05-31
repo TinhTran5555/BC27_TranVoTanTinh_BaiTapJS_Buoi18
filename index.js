@@ -49,7 +49,7 @@ function timSoNhoNhat() {
   var min = nums[0];
   // B2 Duyệt và kiểm tra mảng từ vị trí thứ 2, nếu số đó nhỏ hơn min thì ta sẽ gán lại cho min
   for (var index = 1; index < nums.length; index++) {
-    if (nums[0] < min) {
+    if (nums[index] < min) {
       min = nums[index];
     }
   }
@@ -70,18 +70,20 @@ function timSoDuongNhoNhat() {
       soDuong.push(nums[i]);
     }
   }
-  // Tạo biến soNhoNhat để xét cho trường hợp không có số dương nào trong mảng
+  console.log(soDuong);
+  // B1 Tạo biến soNhoNhat để xét cho trường hợp không có số dương nào trong mảng
   var soNhoNhat = -1
-  // B1 Tạo biến minSoDuong và gán cho giá trị đầu tiền của mảng soDuong
-  var minSoDuong = soDuong[0];
-  // b2 Duyệt và kiểm tra mảng từ vị trí thứ 2, nếu số đó nhỏ hơn minSoDuong thì ta sẽ gán lại cho minSoDuong
-  // var 
-  for (var index = 1; index < soDuong.length; index++) {
-    if (soDuong[index] < minSoDuong) {
+  // Tạo biến minSoDuong và gán cho giá trị cho giá trị đầu tiền trong mảng
+  var minSoDuong = soDuong[0]
+  // b2 Duyệt và kiểm tra mảng từ vị trí thứ 1, nếu số đó nhỏ hơn hoặc bằng minSoDuong thì ta sẽ gán lại cho minSoDuong
+ 
+  for (var index = 0; index < soDuong.length; index++) {
+    if (minSoDuong >= soDuong[index]) {
       minSoDuong = soDuong[index];
       soNhoNhat = minSoDuong
     }
   }
+  console.log(minSoDuong);
   console.log(soNhoNhat);
   if (soNhoNhat === -1 ) {
     var divHienSoDuongNhoNhat = document.getElementById("divHienSoDuongNhoNhat");
@@ -93,7 +95,7 @@ function timSoDuongNhoNhat() {
   var divHienSoDuongNhoNhat = document.getElementById("divHienSoDuongNhoNhat");
   divHienSoDuongNhoNhat.style.display = "block";
   divHienSoDuongNhoNhat.innerHTML = `
-      <p>Số nhỏ nhất: ${minSoDuong}</p>
+      <p>Số dương nhỏ nhất: ${minSoDuong}</p>
     `;
 }}
 // Bài 5
@@ -101,7 +103,7 @@ function timSoDuongNhoNhat() {
 function kiemTraCoSoChan() {
   // B2 Viết hàm tìm số chẵn cuối cùng bến dưới rồi gán vào biến số chẵn
   var soChan = timSoChan();
-  Xét trường hợp khi không có bất kì số chẵn nào trong mảng
+  // Xét trường hợp khi không có bất kì số chẵn nào trong mảng
   if (soChan === -1 || soChan===0) {
     // B3 Hiện thị Kết quả
     var divHienSoChanCuoiCung = document.getElementById(
